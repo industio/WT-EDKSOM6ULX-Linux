@@ -1,0 +1,56 @@
+From 3aaa7a831dccf639203c058da058f907b6889da4 Mon Sep 17 00:00:00 2001
+From: jerry <lyle_wjy@163.com>
+Date: Wed, 22 May 2019 21:03:40 +0800
+Subject: [PATCH 4/6] update fec and bootdelay
+
+---
+ board/freescale/mx6ullevk/mx6ullevk.c | 13 ++++++++-----
+ include/configs/mx6_common.h          |  2 +-
+ 2 files changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/board/freescale/mx6ullevk/mx6ullevk.c b/board/freescale/mx6ullevk/mx6ullevk.c
+index 8089c1c..43c541d 100755
+--- a/board/freescale/mx6ullevk/mx6ullevk.c
++++ b/board/freescale/mx6ullevk/mx6ullevk.c
+@@ -822,17 +822,20 @@ int board_init(void)
+ 	/*set Lcd EN high*/	
+ 	gpio_direction_output(IMX_GPIO_NR(1, 18) , 1);//by Lyle,20190327
+ 	
+-	/* Set buzzer to high */	
+-	gpio_direction_output(IMX_GPIO_NR(1, 9) , 1);//by Lyle,20190111	
+-	udelay(400000);
+-	gpio_direction_output(IMX_GPIO_NR(1, 9) , 0);	
++	gpio_direction_output(IMX_GPIO_NR(4, 16) , 1);	//fec1
++	
++	gpio_direction_output(IMX_GPIO_NR(1, 9) , 1);	//fec2
++	
++	
+ 	    				
+ #ifdef CONFIG_SYS_I2C_MXC
+ 	setup_i2c(0, CONFIG_SYS_I2C_SPEED, 0x7f, &i2c_pad_info1);
+ #endif
+ 
+ #ifdef	CONFIG_FEC_MXC
+-	setup_fec(CONFIG_FEC_ENET_DEV);
++	//setup_fec(CONFIG_FEC_ENET_DEV);
++	setup_fec(0);
++	setup_fec(1);
+ #endif
+ 
+ #ifdef CONFIG_USB_EHCI_MX6
+diff --git a/include/configs/mx6_common.h b/include/configs/mx6_common.h
+index d9be282..a6726cd 100755
+--- a/include/configs/mx6_common.h
++++ b/include/configs/mx6_common.h
+@@ -77,7 +77,7 @@ defined(CONFIG_MX6DL)) && !defined(CONFIG_MX6SOLO)
+ #define CONFIG_SYS_LOAD_ADDR	CONFIG_LOADADDR
+ 
+ #ifndef CONFIG_BOOTDELAY
+-#define CONFIG_BOOTDELAY	1//3
++#define CONFIG_BOOTDELAY	0//1//3
+ #endif
+ 
+ /* allow to overwrite serial and ethaddr */
+-- 
+2.7.4
+

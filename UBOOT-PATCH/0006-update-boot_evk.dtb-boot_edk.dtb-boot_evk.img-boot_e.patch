@@ -1,0 +1,28 @@
+From e1a6b4ecf913020740a68cf2fb7f8826495a9e84 Mon Sep 17 00:00:00 2001
+From: toca <lyle_wjy@163.com>
+Date: Tue, 9 Jul 2019 11:08:29 +0800
+Subject: [PATCH 6/6] update boot_evk.dtb->boot_edk.dtb
+ boot_evk.img->boot_edk.img
+
+---
+ include/configs/mx6ullevk.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/mx6ullevk.h b/include/configs/mx6ullevk.h
+index 14ad278..6753d27 100755
+--- a/include/configs/mx6ullevk.h
++++ b/include/configs/mx6ullevk.h
+@@ -131,8 +131,8 @@
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	CONFIG_MFG_ENV_SETTINGS \
+ 	"script=boot.scr\0" \
+-	"zImage_name=boot_evk.img\0" \
+-	"dtb_name=boot_evk.dtb\0" \
++	"zImage_name=boot_edk.img\0" \
++	"dtb_name=boot_edk.dtb\0" \
+ 	"mxsfb.flag=0\0" \
+ 	"panel=TFT43AB\0" \
+ 	"mmcdev="__stringify(CONFIG_SYS_MMC_ENV_DEV)"\0" \
+-- 
+2.7.4
+
