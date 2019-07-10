@@ -71,7 +71,7 @@ echo fat path:$fat_node
 echo linux path:$linux_node
 
 dd if=/dev/zero of=$1 bs=1k seek=768 conv=fsync count=8
-dd if=u-boot.imx of=$1 bs=1k seek=1 conv=fsync
+dd if=u-boot.imx-sd of=$1 bs=1k seek=1 conv=fsync
 
 check_exit write uboot
 
@@ -89,9 +89,9 @@ cp zImage fat
 
 check_exit cp zImage
 
-cp imx6ull-14x14-evk.dtb fat
+cp imx6ull-14x14-edk.dtb fat
 
-check_exit cp imx6ull-14x14-evk.dtb
+check_exit cp imx6ull-14x14-edk.dtb
 
 umount fat
 
