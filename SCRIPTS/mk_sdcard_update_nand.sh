@@ -6,14 +6,15 @@ if [ $# -gt 0 ]; then
    
 	if [ $# -gt 1 ]; then		
 		echo "Incorrect number of parameters"
-		echo "Usage:"
-        echo " sudo ./mk_sd_update-emmc.sh /dev/sd[a-z]"
+		echo "if the sdcard mounted,need umount this sdcard."
+       	echo "sudo ./mk_sd_update_nand.sh /dev/sd[a-z] or sudo bash mk_sd_update_nand.sh /dev/sd[a-z]"
 		exit 1
 	fi
 		
 else
         echo "Usage:"
-        echo " sudo ./mk_sd_update-emmc.sh /dev/sd[a-z]"
+        echo "if the sdcard mounted,need umount this sdcard."
+       	echo "sudo ./mk_sd_update_nand.sh /dev/sd[a-z] or sudo bash mk_sd_update_nand.sh /dev/sd[a-z]"
 		exit 2
 fi
 
